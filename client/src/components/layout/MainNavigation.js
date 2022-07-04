@@ -1,20 +1,19 @@
-import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css';
 
 function MainNavigation() {
     return (
     <header className={classes.header}>
-        <div className={classes.logo}> Journeys</div>
+        <div className={classes.logo}>Travel Journeys</div>
             <nav>
                   <ul>
                     <li>
-                        <Link to="/">All Meetups</Link>
+                        <a href="/travel-journeys">All Travel Journeys</a>
                     </li>
                     <li>
-                        <Link to="/new-journey">New Journey</Link>
+                        <a href="/travel-journeys">New Journey</a>
                     </li>
                     <li>
-                        <Link to="/favorites">Favorites</Link>
+                        <a href="/favorites">Favorites</a>
                     </li>
                 </ul>
             </nav>

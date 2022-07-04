@@ -2,19 +2,20 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AllTravelJourneys from './pages/AllTravelJourneys';
 import NewTravelJourney from './pages/NewTravelJourney';
 import FavororiteTravelJourneys from './pages/FavoriteTravelJourneys';
-import MainNavigation from './components/layout/MainNavigation';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (
     <Router>
-      <MainNavigation />
+      <Layout>
       <Routes>
-        <Route path="/" element={<AllTravelJourneys />} />
-        <Route path="/new-journey" element={<NewTravelJourney />} />
+        <Route path="/travel-journeys" element={<AllTravelJourneys />} />
+        <Route path="/travel-journeys/add" element={<NewTravelJourney />} />
         <Route path="/favorites" element={<FavororiteTravelJourneys />} />
       </Routes>
+  </Layout>
     </Router>
-  )
+    )
 }
 
 export default App;

@@ -5,21 +5,16 @@ function JourneyList(props) {
     return (
         <ul className={classes.list}>
             {props.travelJourneys.map((journey) => {
-               return (
-                <li className={classes.item}>
-                    <div className={classes.image}>
-                        <img src={journey.image} alt={journey.title} />
-                    </div>
-                    <div className={classes.content}>
-                        <h3>{journey.title}</h3>
-                        <p>{journey.description}</p>
-                        <div>{journey.date}</div>
-                    </div>
-                    <div className={classes.actions}>
-                        <button>To Favorites</button>
-                    </div>
-                </li>
-            )
+                return (
+                    <JourneyItem
+                        key={journey._id}
+                        id={journey._id}
+                        image={journey.image}
+                        title={journey.title}
+                        date={journey.date.substring(0, 10).split('-').reverse().join("-")}
+                        description={journey.description}
+                    />
+                )
             })}
         </ul>
     )
