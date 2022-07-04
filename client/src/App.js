@@ -1,13 +1,19 @@
-import Backdrop from './components/Backdrop';
-import Todo from './components/Todo';
-import Modal from './components/Modal';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AllTravelJourneys from './pages/AllTravelJourneys';
+import NewTravelJourney from './pages/NewTravelJourney';
+import FavororiteTravelJourneys from './pages/FavoriteTravelJourneys';
+import MainNavigation from './components/layout/MainNavigation';
 
 function App() {
   return (
-  <div>
-    <h1>My Todos</h1>
-    <Todo text='My journey'/>
-  </div> 
+    <Router>
+      <MainNavigation />
+      <Routes>
+        <Route path="/" element={<AllTravelJourneys />} />
+        <Route path="/new-journey" element={<NewTravelJourney />} />
+        <Route path="/favorites" element={<FavororiteTravelJourneys />} />
+      </Routes>
+    </Router>
   )
 }
 
