@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const travelJourneySchema = new Schema({
+const favoriteSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -19,6 +19,6 @@ const travelJourneySchema = new Schema({
     date: { type: Date }
 });
 
-const TravelJourney = mongoose.model('FavoritesPlace', travelJourneySchema);
+const Favorites = mongoose.model('Favorites', favoriteSchema);
 
-module.exports = TravelJourney;
+module.exports = Favorites;

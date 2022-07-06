@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const travelJourneysRouter = require('./routes/travelJourneysRoute');
+const favoriteRouter = require('./routes/favoritesRoute');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -20,6 +21,7 @@ connection.once("open",()=> {
 });
 
 app.use('/travel-journeys', travelJourneysRouter);
+app.use('/favorites', favoriteRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

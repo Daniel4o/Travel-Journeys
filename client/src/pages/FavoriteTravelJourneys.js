@@ -1,21 +1,21 @@
 import { useContext } from "react";
 import FavoritesContext from "../store/favorites-context";
 import JourneyList from "../components/journeys/JourneyList";
+import GetFavoritesForm from "../components/forms/favorites/GetFavoritesForm";
 
 function FavoriteTravelJourneys() {
-    const favoritesContext = useContext(FavoritesContext);
-    let content;
-    if (favoritesContext.totalFavorites === 0) {
-        content = <p>You got no favorites yet.</p>
+    const {favorites, isLoading, error} = GetFavoritesForm();
+    console.log(favorites)
+    if (isLoading) {
+        return <h2>Loading...</h2>
     }
-    else {
-        content = <JourneyList travelJourneys={favoritesContext.favorites} />
+    if (error) {
+        return <div>There was an error: {error}</div>
     }
 
     return (
         <section>
             <h1>My favorites</h1>
-            {content}
         </section>
     )
 }

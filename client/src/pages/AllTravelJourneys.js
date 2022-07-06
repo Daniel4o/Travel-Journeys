@@ -1,6 +1,6 @@
-import TravelJourneysForm from "../components/forms/TravelJourneysForm";
+import TravelJourneysForm from "../components/forms/travelJourney/TravelJourneysForm";
 import JourneyList from "../components/journeys/JourneyList";
-import {Link} from 'react-router-dom';
+
 function AllTravelJourneys() {
     const { travelJourneys, isLoading, error } = TravelJourneysForm();
 
@@ -13,7 +13,6 @@ function AllTravelJourneys() {
 
     return (
         <section>
-            <Link to="/favorites">kk</Link>
             <h1>All Travel Journeys</h1>
             <JourneyList travelJourneys={travelJourneys} />
         </section>

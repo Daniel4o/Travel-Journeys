@@ -2,7 +2,7 @@ import JourneyItem from './JourneyItem';
 import classes from './JourneyList.module.css';
 
 function JourneyList(props) {
-    console.log(props.travelJourneys.map(a=>a.date.substring(0,10).split("-").reverse().join("-")))
+
     return (
         <ul className={classes.list}>
             {props.travelJourneys.map((journey) => {

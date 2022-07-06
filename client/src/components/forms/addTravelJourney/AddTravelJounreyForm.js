@@ -1,10 +1,10 @@
-import useFormTravelJourneys from './useFormAddTravelJourney';
-import Card from '../ui/Card';
+import useFormTravelJourney from './useFormAddTravelJourney.js';
+import Card from '../../ui/Card';
 import classes from './AddTravelJourneyForm.module.css';
 
 
 function AddTravelJourneyForm() {
-    const { submitHandler, titleInputRef, imageInputRef, dateInputRef, descriptionInputRef } = useFormTravelJourneys();
+    const { submitHandler, titleInputRef, imageInputRef, dateInputRef, descriptionInputRef } = useFormTravelJourney();
 
     return (
         <Card>

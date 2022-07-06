@@ -1,4 +1,4 @@
-import AddTravelJourneyForm from "../components/forms/AddTravelJounreyForm.js";
+import AddTravelJourneyForm from "../components/forms/addTravelJourney/AddTravelJounreyForm.js";
 
 function NewTravelJourney() {
 

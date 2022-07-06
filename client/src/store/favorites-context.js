@@ -12,9 +12,8 @@ export function FavoritesContextProvider(props) {
     const [favorites, setFavorites] = useState([]);
     
     function addFavoriteHandler(favoriteJourney) {
-        setFavorites((prevFavorites) => {
-            return prevFavorites.concat(favoriteJourney);
-        });
+        const newFavorite = [...favorites,favoriteJourney]
+        setFavorites(newFavorite);
     }
 
     function removeFavoriteHandler(journeyId) {

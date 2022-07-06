@@ -11,18 +11,18 @@ function MainNavigation() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/travel-journeys">All Travel Journeys</Link>
+                        <a href="/travel-journeys">All Travel Journeys</a>
                     </li>
                     <li>
-                        <Link to="/travel-journeys/add">New Journey</Link>
+                        <a href="/travel-journeys/add">New Journey</a>
                     </li>
                     <li>
-                        <Link to='/favorites'>
+                        <a href='/favorites'>
                             My Favorites
                             <span className={classes.badge}>
                                 {favoritesContext.totalFavorites}
                             </span>
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </nav>

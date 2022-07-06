@@ -27,7 +27,7 @@ exports.updateTravelJourney = async (req, res) => {
 }
 
 exports.deleteTravelJourney = async (req, res) => {
-    await TravelJourney.findByIdAndDelete(req.params.id)
+    await TravelJourney.findByIdAndDelete(req.params._id)
         .then(() => res.status(200).json("Travel journey deleted."))
         .catch(error => res.status(400).json("Error" + error))
 }

@@ -2,24 +2,9 @@ import { useContext } from 'react';
 import Card from '../ui/Card';
 import FavoritesContext from '../../store/favorites-context';
 import classes from './JourneyItem.module.css';
+import AddFavoriteForm from '../forms/favorites/AddFavoriteForm';
 
 function JourneyItem(props) {
-    const favoritesContext = useContext(FavoritesContext);
-    const itemIsFavorite = favoritesContext.itemIsFavorite(props._id);
-    function toggleFavoriteStatusHandler() {
-        if (itemIsFavorite) {
-            favoritesContext.removeFavorite(props._id);
-        }
-        else {
-            favoritesContext.addFavorite({
-                _id: props._id,
-                title: props.title,
-                image: props.image,
-                date: props.date,
-                description: props.description
-            });
-        }
-    }
 
     return (
         <li className={classes.item}>
@@ -33,9 +18,7 @@ function JourneyItem(props) {
                     <p>{props.description}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={toggleFavoriteStatusHandler}>
-                        {itemIsFavorite ? "Remove from Favorites" : "To favorites"}
-                    </button>
+                   <AddFavoriteForm values={props}/>
                 </div>
             </Card>
         </li>
