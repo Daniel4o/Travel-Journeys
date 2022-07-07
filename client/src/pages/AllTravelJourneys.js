@@ -2,7 +2,7 @@ import TravelJourneysForm from "../components/forms/travelJourney/TravelJourneys
 import JourneyList from "../components/journeys/JourneyList";
 
 function AllTravelJourneys() {
-    const { travelJourneys, isLoading, error } = TravelJourneysForm();
+    const { travelJourneys, deleteTravelJourney, isLoading, error } = TravelJourneysForm();
 
     if (isLoading) {
         return <h2>Loading...</h2>
@@ -14,7 +14,7 @@ function AllTravelJourneys() {
     return (
         <section>
             <h1>All Travel Journeys</h1>
-            <JourneyList travelJourneys={travelJourneys} />
+            <JourneyList travelJourneys={travelJourneys} deleteJourney={deleteTravelJourney} />
         </section>
     )
 }

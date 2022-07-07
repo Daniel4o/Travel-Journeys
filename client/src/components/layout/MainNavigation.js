@@ -1,10 +1,8 @@
 import classes from './MainNavigation.module.css';
-import { Link } from 'react-router-dom';
-import {useContext} from 'react';
-import FavoritesContext from '../../store/favorites-context';
+import GetFavoritesForm from '../forms/favorites/GetFavoritesForm';
 
 function MainNavigation() {
-    const favoritesContext = useContext(FavoritesContext);
+    const {favoritesLength} =GetFavoritesForm();
     return (
         <header className={classes.header}>
             <div className={classes.logo}>Travel Journeys</div>
@@ -20,7 +18,7 @@ function MainNavigation() {
                         <a href='/favorites'>
                             My Favorites
                             <span className={classes.badge}>
-                                {favoritesContext.totalFavorites}
+                                {favoritesLength}
                             </span>
                         </a>
                     </li>

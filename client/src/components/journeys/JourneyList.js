@@ -2,7 +2,7 @@ import JourneyItem from './JourneyItem';
 import classes from './JourneyList.module.css';
 
 function JourneyList(props) {
-
+console.log(props.deleteJourney)
     return (
         <ul className={classes.list}>
             {props.travelJourneys.map((journey) => {
@@ -14,8 +14,9 @@ function JourneyList(props) {
                         title={journey.title}
                         date={journey.date}
                         description={journey.description}
+                        deleteJourney ={props.deleteJourney}
                     />
-                )
+                    )
             })}
         </ul>
     )

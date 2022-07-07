@@ -5,6 +5,7 @@ function AddFavoriteForm(props) {
 
     const [favorited, setFavorited] = useState([]);
     const [isFavorited, setIsFavorited] = useState(false);
+    const [favoriteNumber, setFavoriteNumber] = useState([]);
     const favorite = {
         _id: props.values._id,
         title: props.values.title,
@@ -17,11 +18,10 @@ function AddFavoriteForm(props) {
         const response = await fetch(`${BASE_URL}/favorites`)        
         return response.json()
         .then((data) => {
-            console.log(favorite._id)
-            setFavorited(data);    
-            const isFavorite = favorited.map(isFavorited=>isFavorited._id);
-          console.log(isFavorite)
-            if(isFavorite === undefined) setIsFavorited(true)
+            setFavorited(data);   
+            
+            const isFavorite = data.map(isFavorited=>isFavorited._id ).flat();
+            if(isFavorite.indexOf(favorite._id) >-1) setIsFavorited(true);
         })
         .catch((error) => {
             console.log(error);
@@ -60,6 +60,7 @@ function AddFavoriteForm(props) {
 
     return (
         <div>
+            {favoriteNumber}
             <button onClick={onClickFavorite}>{isFavorited ? "Remove from Favorites" : "Add to Favorites"}</button>
         </div>
     )
