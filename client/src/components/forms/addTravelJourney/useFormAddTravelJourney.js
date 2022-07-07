@@ -27,7 +27,7 @@ function useFormAddTravelJourneys() {
 
         }
 
-        fetch(`${BASE_URL}/travel-journeys/add`, {
+        fetch(`${BASE_URL}/travel-journeys`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(journeyData)

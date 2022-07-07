@@ -16,6 +16,7 @@ function FavoriteTravelJourneys() {
     return (
         <section>
             <h1>My favorites</h1>
+            <JourneyList travelJourneys={favorites} />
         </section>
     )
 }

@@ -1,19 +1,20 @@
 let Favorites = require('../models/favorites');
 
-exports.Favorites =  (req, res) => {
-     Favorites.find({"_id": req.body._id })
-            .exec((err, favorite) => {
-                if (err) return res.status(400).send(err)
-    
-                //How can we know if I already favorite this movie or not ? 
-                let result = false;
-                if (favorite.length !== 0) {
-                    result = true
-                }
-    
-                res.status(200).json({ success: true, favorited: result });
-    
-            })
+exports.Favorites = (req, res) => {
+    Favorites.find({ "_id": req.body._id })
+        .exec((err, favorite) => {
+            if (err) return res.status(400).send(err)
+
+            //How can we know if I already favorite this movie or not ? 
+            let result = false;
+            console.log(favorite)
+            if (favorite.length !== 0) {
+                result = true
+            }
+
+            res.status(200).json({ success: true, favorited: result });
+
+        })
 
 }
 

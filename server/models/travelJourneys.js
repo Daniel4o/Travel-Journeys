@@ -19,6 +19,6 @@ const travelJourneySchema = new Schema({
     date: { type: Date }
 });
 
-const TravelJourney = mongoose.model('FavoritesPlace', travelJourneySchema);
+const TravelJourney = mongoose.model('journeys', travelJourneySchema);
 
 module.exports = TravelJourney;

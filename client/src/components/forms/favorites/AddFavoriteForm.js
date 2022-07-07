@@ -3,52 +3,54 @@ import { useEffect, useState } from "react";
 function AddFavoriteForm(props) {
     const BASE_URL = process.env.REACT_APP_URL;
 
-    const [favorited, setFavorited] = useState(false);
+    const [favorited, setFavorited] = useState([]);
+    const [isFavorited, setIsFavorited] = useState(false);
     const favorite = {
-        id: props.values._id,
+        _id: props.values._id,
         title: props.values.title,
         image: props.values.image,
         date: props.values.date,
         description: props.values.description
     }
 
-    useEffect(() => {
-        fetch(`${BASE_URL}/favorites/favorited`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(favorite)
-        }).then((response) => {
-            
-            console.log(response)
-            setFavorited(response.data.favorited);
+    useEffect(async() => {
+        const response = await fetch(`${BASE_URL}/favorites`)        
+        return response.json()
+        .then((data) => {
+            console.log(favorite._id)
+            setFavorited(data);    
+            const isFavorite = favorited.map(isFavorited=>isFavorited._id);
+          console.log(isFavorite)
+            if(isFavorite === undefined) setIsFavorited(true)
         })
-            .catch((error) => {
-                console.log(error);
-            })
+        .catch((error) => {
+            console.log(error);
+        })
     }, [BASE_URL]);
-
-    const onClickFavorite = () => {
-        console.log(favorited)
-        if (favorited) {
-            fetch(`${BASE_URL}/favorites/removeFromFavorites`, {
+    
+    const onClickFavorite =  () => {
+            const isFavorite = favorited.find(isFavorited=>isFavorited._id === favorite._id);
+            if(isFavorite) {
+            fetch(`${BASE_URL}/favorites`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(favorite)
             }).then(() => {
-                setFavorited(!favorited);
+                setIsFavorited(!isFavorited);
             })
                 .catch((error) => {
                     console.log(error);
                 })
         }
+    
         
         else {
-            fetch(`${BASE_URL}/favorites/addToFavorites`, {
+            fetch(`${BASE_URL}/favorites`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(favorite)
             }).then(() => {
-                setFavorited(!favorited);
+                setIsFavorited(!isFavorited);
             })
                 .catch((error) => {
                     console.log(error);
@@ -58,7 +60,7 @@ function AddFavoriteForm(props) {
 
     return (
         <div>
-            <button onClick={onClickFavorite}>{favorited ? "Remove from Favorites" : "Add to Favorites"}</button>
+            <button onClick={onClickFavorite}>{isFavorited ? "Remove from Favorites" : "Add to Favorites"}</button>
         </div>
     )
 }

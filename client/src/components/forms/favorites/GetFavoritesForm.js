@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react';
 
     useEffect(async () => {
         try {
-            const response = await fetch(`${BASE_URL}/favorites/getFavorites`);
+            const response = await fetch(`${BASE_URL}/favorites`);
             return response.json()
                 .then(data => {
                     setFavorites(data);
