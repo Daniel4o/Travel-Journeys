@@ -23,12 +23,17 @@ const TravelJourneysForm = () => {
 
     const deleteTravelJourney = async (id) => {
         try {
-            await fetch(`${BASE_URL}/travel-journeys/${id}`, {
-                method: "DELETE"
-            }).then(response => {
-                setTravelJourneys(travelJourneys.filter(journeys => journeys._id !== id));
-                return response.json();
+            await fetch(`${BASE_URL}/favorites/${id}`, {
+                method: "DELETE",
             })
+                .then(() => {
+                     fetch(`${BASE_URL}/travel-journeys/${id}`, {
+                        method: "DELETE"
+                    })
+                }).then(response => {
+                    setTravelJourneys(travelJourneys.filter(journeys => journeys._id !== id));
+                    return response.json();
+                })
         } catch (error) {
             console.log(error);
         }

@@ -31,10 +31,8 @@ function AddFavoriteForm(props) {
     const onClickFavorite =  () => {
             const isFavorite = favorited.find(isFavorited=>isFavorited._id === favorite._id);
             if(isFavorite) {
-            fetch(`${BASE_URL}/favorites`, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(favorite)
+            fetch(`${BASE_URL}/favorites/${favorite._id}`, {
+                method: "DELETE"
             }).then(() => {
                 setIsFavorited(!isFavorited);
             })

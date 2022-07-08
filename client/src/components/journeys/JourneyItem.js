@@ -2,8 +2,8 @@ import Card from '../ui/Card';
 import classes from './JourneyItem.module.css';
 import AddFavoriteForm from '../forms/favorites/AddFavoriteForm';
 
-function JourneyItem(props) {
-console.log(props._id)
+function  JourneyItem (props)  {
+
     return (
         <li className={classes.item}>
             <Card>
@@ -17,7 +17,7 @@ console.log(props._id)
                 </div>
                 <div className={classes.actions}>
                    <AddFavoriteForm values={props}/>
-                    <button onClick={() =>props.deleteJourney(props._id)}>Delete</button>
+                    <button onClick={() =>props.delete(props._id)}>Delete</button>
                 </div>
             </Card>
         </li>
