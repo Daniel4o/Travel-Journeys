@@ -32,7 +32,7 @@ function useFormAddTravelJourneys() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(journeyData)
         }).then(() => {
-            navigate('/travel-journeys')
+            navigate('/travel-journeys');
         })
     }
 

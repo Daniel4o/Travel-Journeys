@@ -14,10 +14,10 @@ function JourneyList(props) {
                         title={journey.title}
                         date={journey.date}
                         description={journey.description}
-                        delete ={props.deleteJourney}
-                        />
-                        )
-                    })}
+                        delete={props.deleteJourney}
+                    />
+                )
+            })}
         </ul>
     )
 }

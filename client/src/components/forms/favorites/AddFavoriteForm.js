@@ -5,7 +5,7 @@ function AddFavoriteForm(props) {
 
     const [favorited, setFavorited] = useState([]);
     const [isFavorited, setIsFavorited] = useState(false);
-    const [favoriteNumber, setFavoriteNumber] = useState([]);
+   
     const favorite = {
         _id: props.values._id,
         title: props.values.title,
@@ -14,23 +14,26 @@ function AddFavoriteForm(props) {
         description: props.values.description
     }
 
-    useEffect(async() => {
-        const response = await fetch(`${BASE_URL}/favorites`)        
-        return response.json()
-        .then((data) => {
-            setFavorited(data);   
-            
-            const isFavorite = data.map(isFavorited=>isFavorited._id ).flat();
-            if(isFavorite.indexOf(favorite._id) >-1) setIsFavorited(true);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+    useEffect(() => {
+        const getFavorites = async () => {
+            const response = await fetch(`${BASE_URL}/favorites`)
+            return response.json()
+                .then((data) => {
+                    setFavorited(data);
+
+                    const isFavorite = data.map(isFavorited => isFavorited._id).flat();
+                    if (isFavorite.indexOf(favorite._id) > -1) setIsFavorited(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+        getFavorites();
     }, [BASE_URL]);
-    
-    const onClickFavorite =  () => {
-            const isFavorite = favorited.find(isFavorited=>isFavorited._id === favorite._id);
-            if(isFavorite) {
+
+    const onClickFavorite = () => {
+        const isFavorite = favorited.find(isFavorited => isFavorited._id === favorite._id);
+        if (isFavorite) {
             fetch(`${BASE_URL}/favorites/${favorite._id}`, {
                 method: "DELETE"
             }).then(() => {
@@ -40,8 +43,7 @@ function AddFavoriteForm(props) {
                     console.log(error);
                 })
         }
-    
-        
+
         else {
             fetch(`${BASE_URL}/favorites`, {
                 method: "POST",
@@ -58,7 +60,6 @@ function AddFavoriteForm(props) {
 
     return (
         <div>
-            {favoriteNumber}
             <button onClick={onClickFavorite}>{isFavorited ? "Remove from Favorites" : "Add to Favorites"}</button>
         </div>
     )
