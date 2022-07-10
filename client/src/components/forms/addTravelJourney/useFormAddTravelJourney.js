@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useRef } from 'react';
+import { useNavigate,  } from "react-router-dom";
+import { useRef, useState } from 'react';
 
 function useFormAddTravelJourneys() {
     const BASE_URL = process.env.REACT_APP_URL;
@@ -9,8 +9,6 @@ function useFormAddTravelJourneys() {
     const imageInputRef = useRef();
     const dateInputRef = useRef();
     const descriptionInputRef = useRef();
-
-
 
     function submitHandler(event) {
         event.preventDefault();
@@ -24,9 +22,8 @@ function useFormAddTravelJourneys() {
             image: enteredImage,
             date: enteredDate,
             description: enteredDescription
-
         }
-
+        
         fetch(`${BASE_URL}/travel-journeys`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

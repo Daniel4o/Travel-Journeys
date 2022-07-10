@@ -40,6 +40,11 @@
     border-radius: 4px;
     width: 30%
   }
+
+  .actions a {
+    color: #77002e;
+    text-decoration: none;
+  }
   
   .actions button:hover,
   .actions button:active {

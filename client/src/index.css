@@ -37,18 +37,6 @@ h1, h2 {
   background-color: #f8dae9;
 }
 
-.card {
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  width: 20rem;
-}
-
-.actions {
-  text-align: right;
-}
-
 .modal {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;

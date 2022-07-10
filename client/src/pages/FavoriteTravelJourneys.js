@@ -8,7 +8,7 @@ function FavoriteTravelJourneys() {
         return <h2>Loading...</h2>
     }
     if (error) {
-        return <div>There was an error: {error}</div>
+        return <h2>There was an error: {error}</h2>
     }
 
     return (

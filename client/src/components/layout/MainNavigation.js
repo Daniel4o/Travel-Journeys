@@ -2,7 +2,7 @@ import classes from './MainNavigation.module.css';
 import GetFavoritesForm from '../forms/favorites/GetFavoritesForm';
 
 function MainNavigation() {
-    const {favoritesLength} =GetFavoritesForm();
+    const { favoritesLength } = GetFavoritesForm();
     return (
         <header className={classes.header}>
             <div className={classes.logo}>Travel Journeys</div>
