@@ -1,6 +1,6 @@
 import TravelJourneysForm from "../components/forms/travelJourney/TravelJourneysForm";
 import JourneyList from "../components/journeys/JourneyList";
-import Dialog from "../components/dialog/Dialog";
+import Todo from "../components/dialog/Todo";
 
 function AllTravelJourneys() {
     const { travelJourneys, deleteTravelJourney, isLoading, error } = TravelJourneysForm();
@@ -18,10 +18,11 @@ function AllTravelJourneys() {
             <JourneyList
                 travelJourneys={travelJourneys}
                 deleteJourney={deleteTravelJourney}
-                Dialog={Dialog}
+                Todo={Todo}
             />
         </section>
     )
 }
+
 
 export default AllTravelJourneys;

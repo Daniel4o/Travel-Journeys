@@ -3,6 +3,7 @@ import classes from './JourneyItem.module.css';
 import AddFavoriteForm from '../forms/favorites/AddFavoriteForm';
 
 function JourneyItem(props) {
+const Todo = props.Todo;
 
     return (
         <li className={classes.item}>
@@ -17,9 +18,7 @@ function JourneyItem(props) {
                 </div>
                 <div className={classes.actions}>
                     <AddFavoriteForm values={props} />
-                    <button
-                        onClick={() => props.delete(props._id)}>Delete
-                    </button>
+                   <Todo delete={() =>props.delete(props._id)}></Todo>
                 </div>
             </Card>
         </li>

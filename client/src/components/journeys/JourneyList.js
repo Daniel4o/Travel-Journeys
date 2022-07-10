@@ -15,6 +15,7 @@ function JourneyList(props) {
                         date={journey.date}
                         description={journey.description}
                         delete={props.deleteJourney}
+                        Todo={props.Todo}
                     />
                 )
             })}

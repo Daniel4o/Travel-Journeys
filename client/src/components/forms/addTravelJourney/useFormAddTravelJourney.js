@@ -4,7 +4,7 @@ import { useRef } from 'react';
 function useFormAddTravelJourneys() {
     const BASE_URL = process.env.REACT_APP_URL;
     const navigate = useNavigate();
-    
+
     const titleInputRef = useRef();
     const imageInputRef = useRef();
     const dateInputRef = useRef();
