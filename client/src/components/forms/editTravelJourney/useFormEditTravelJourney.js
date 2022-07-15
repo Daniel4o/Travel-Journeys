@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const useFormEditTravelJourney = () => {
     const BASE_URL = process.env.REACT_APP_URL;
-    
+
     const titleInputRef = useRef();
     const imageInputRef = useRef();
     const dateInputRef = useRef();
@@ -43,7 +43,6 @@ const useFormEditTravelJourney = () => {
 
     function submitHandler(event) {
         event.preventDefault();
-        console.log(event.target)
         const enteretedTitle = titleInputRef.current.value;
         const enteredImage = imageInputRef.current.value;
         const enteredDate = dateInputRef.current.value;
@@ -55,18 +54,28 @@ const useFormEditTravelJourney = () => {
             date: enteredDate,
             description: enteredDescription
         }
-        console.log(id)
+        try {
             fetch(`${BASE_URL}/travel-journeys/${id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             }).then(() => {
-                navigate('/travel-journeys');
-            })
+                console.log(id)
+                fetch(`${BASE_URL}/favorites/${id}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                })
+            }).then(() => {
+                    navigate('/travel-journeys');
+                })
+        } catch (error) {
+            console.log(error);
         }
-
-        return { isLoading, error, initialValues, submitHandler }
-
     }
 
-    export default useFormEditTravelJourney;
+    return { isLoading, error, initialValues, submitHandler, titleInputRef, imageInputRef, dateInputRef, descriptionInputRef }
+
+}
+
+export default useFormEditTravelJourney;

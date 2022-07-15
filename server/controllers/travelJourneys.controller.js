@@ -20,8 +20,8 @@ exports.addTravelJourney = async (req, res) => {
 }
 
 exports.updateTravelJourney = async (req, res) => {
-    const TravelJourney = await TravelJourney.findById(req.params.id);
-    await TravelJourney.update(req.body)
+    const updateTravelJourney = await TravelJourney.findById(req.params.id);
+    await updateTravelJourney.update(req.body)
         .then(() => res.status(200).json(travelJ))
         .catch(error => res.status(400).json("Error" + error));
 }

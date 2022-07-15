@@ -1,7 +1,6 @@
 import Card from '../ui/Card';
 import classes from './JourneyItem.module.css';
 import AddFavoriteForm from '../forms/favorites/AddFavoriteForm';
-import EditTravelJourney from '../forms/editTravelJourney/EditTravelJourney';
 
 function JourneyItem(props) {
     const Todo = props.Todo;
@@ -20,7 +19,7 @@ function JourneyItem(props) {
                 <div className={classes.actions}>
                     <AddFavoriteForm values={props} />
                     <a href={`travel-journeys/${props._id}`}>Edit</a>
-                    <Todo delete={() => props.delete(props._id)}></Todo>
+                    {Todo != undefined ? <Todo delete={() => props.delete(props._id)}></Todo> : null}
                 </div>
             </Card>
         </li>

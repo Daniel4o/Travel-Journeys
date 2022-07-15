@@ -17,19 +17,19 @@ const EditTravelJourney = () => {
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <label htmlFor='title'>Journey Title</label>
-                    <input defaultValue={initialValues.title} type='text' required id='title' />
+                    <input ref={titleInputRef} defaultValue={initialValues.title} type='text' required id='title' />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='image'>Journey Image</label>
-                    <input defaultValue={initialValues.image} type='url' required id='image'  />
+                    <input ref={imageInputRef} defaultValue={initialValues.image} type='url' required id='image'  />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='date'>Journey Date</label>
-                    <input defaultValue={initialValues.date} type='date' required id='date'  />
+                    <input ref={dateInputRef} defaultValue={initialValues.date} type='date' required id='date'  />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='description'>Journey Description</label>
-                    <textarea defaultValue={initialValues.description} type='text' required id='description' rows='5' ></textarea>
+                    <textarea ref={descriptionInputRef} defaultValue={initialValues.description} type='text' required id='description' rows='5' ></textarea>
                 </div>
                 <div className={classes.actions}>
                     <a className={classes.a} href="/travel-journeys">Cancel</a>
