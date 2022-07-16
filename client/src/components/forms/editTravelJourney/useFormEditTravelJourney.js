@@ -54,6 +54,7 @@ const useFormEditTravelJourney = () => {
             date: enteredDate,
             description: enteredDescription
         }
+
         try {
             fetch(`${BASE_URL}/travel-journeys/${id}`, {
                 method: "PATCH",

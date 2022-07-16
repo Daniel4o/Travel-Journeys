@@ -24,10 +24,11 @@
   
   .actions {
     margin-top: 1rem;
-    text-align: right;
+    text-align: center;
+    vertical-align: top;
   }
   
-  .actions button {
+   button {
     font: inherit;
     cursor: pointer;
     background-color: #77002e;
@@ -36,19 +37,7 @@
     border: 1px solid #77002e;
     border-radius: 4px;
     font-weight: bold;
-  }
-
-  .a {
-    text-align: left;
-    text-decoration: none;
-    font: inherit;
-    cursor: pointer;
-    background-color: #77002e;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border: 1px solid #77002e;
-    border-radius: 4px;
-    font-weight: bold;
+    width: 20%
   }
   
   .actions button:hover,

@@ -5,7 +5,8 @@ function AddFavoriteForm(props) {
 
     const [favorited, setFavorited] = useState([]);
     const [isFavorited, setIsFavorited] = useState(false);
-   
+    const [favoriteLength, setFavoriteLength] = useState(0);
+
     const favorite = {
         _id: props.values._id,
         title: props.values.title,
@@ -22,6 +23,7 @@ function AddFavoriteForm(props) {
                     setFavorited(data);
 
                     const isFavorite = data.map(isFavorited => isFavorited._id).flat();
+                    setFavoriteLength(isFavorite.length)
                     if (isFavorite.indexOf(favorite._id) > -1) setIsFavorited(true);
                 })
                 .catch((error) => {
@@ -38,6 +40,7 @@ function AddFavoriteForm(props) {
                 method: "DELETE"
             }).then(() => {
                 setIsFavorited(!isFavorited);
+                setFavoriteLength(favoriteLength - 1);
             })
                 .catch((error) => {
                     console.log(error);
@@ -51,6 +54,7 @@ function AddFavoriteForm(props) {
                 body: JSON.stringify(favorite)
             }).then(() => {
                 setIsFavorited(!isFavorited);
+                setFavoriteLength(favoriteLength + 1);
             })
                 .catch((error) => {
                     console.log(error);
@@ -60,7 +64,7 @@ function AddFavoriteForm(props) {
 
     return (
         <div>
-            <button onClick={onClickFavorite}>{isFavorited ? "Remove from Favorites" : "Add to Favorites"}</button>
+            <button count={favoriteLength} onClick={onClickFavorite}>{isFavorited ? "Remove from Favorites" : "Add to Favorites"}</button>
         </div>
     )
 }

@@ -21,19 +21,20 @@ const EditTravelJourney = () => {
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='image'>Journey Image</label>
-                    <input ref={imageInputRef} defaultValue={initialValues.image} type='url' required id='image'  />
+                    <input ref={imageInputRef} defaultValue={initialValues.image} type='url' required id='image' />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='date'>Journey Date</label>
-                    <input ref={dateInputRef} defaultValue={initialValues.date} type='date' required id='date'  />
+                    <input ref={dateInputRef} defaultValue={initialValues.date} type='date' required id='date' />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='description'>Journey Description</label>
                     <textarea ref={descriptionInputRef} defaultValue={initialValues.description} type='text' required id='description' rows='5' ></textarea>
                 </div>
                 <div className={classes.actions}>
-                    <a className={classes.a} href="/travel-journeys">Cancel</a>
                     <button>Edit Journey</button>
+                    <div></div>
+                    <a href="/travel-journeys"><button type="button">Cancel</button></a>
                 </div>
             </form>
         </Card>

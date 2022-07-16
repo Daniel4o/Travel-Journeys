@@ -13,15 +13,34 @@ exports.getFavorites = async (req, res) => {
 }
 
 exports.addFavorite = async (req, res) => {
-    const favorite = new Favorites(req.body);
+    const title = req.body.title;
+    const image = req.file.image;
+    const date = req.body.date;
+    const description = req.body.description;
+
+    const newFavorite = {
+        title,
+        image,
+        date,
+        description
+    }
+
+    const favorite = new Favorites(newFavorite);
     await favorite.save()
         .then(() => res.status(200).json("Added to favorites"))
         .catch(error => res.status(400).json("Error" + error));
 }
 
 exports.updateFavorite = async (req, res) => {
-    const updateFavorite = await Favorites.findById(req.params.id);
-    await updateFavorite.update(req.body)
+    const updateFavorite = await Favorites.findById(req.params.id)
+        .then((favorite) => {
+            favorite.title = req.body.title;
+            favorite.image = req.file.image;
+            favorite.date = req.body.date;
+            favorite.description = req.body.description
+
+            updateFavorite.update(favorite)
+        })
         .then(() => res.status(200).json(travelJ))
         .catch(error => res.status(400).json("Error" + error));
 }

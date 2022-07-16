@@ -1,39 +1,48 @@
 import { useNavigate } from "react-router-dom";
-import { useRef } from 'react';
+import { useState } from 'react';
 
 function useFormAddTravelJourneys() {
     const BASE_URL = process.env.REACT_APP_URL;
     const navigate = useNavigate();
 
-    const titleInputRef = useRef();
-    const imageInputRef = useRef();
-    const dateInputRef = useRef();
-    const descriptionInputRef = useRef();
+    const [newJourney, setNewJourney] = useState({
+        title: "",
+        image: "",
+        date: "",
+        description: "",
+    })
+
+    const handleChange = (event) => {
+        setNewJourney({ ...newJourney, [event.target.name]: event.target.value });
+    }
+
+    const handleImage = (event) => {
+        setNewJourney({ ...newJourney, image: event.target.files[0] });
+    }
 
     function submitHandler(event) {
         event.preventDefault();
-        const enteretedTitle = titleInputRef.current.value;
-        const enteredImage = imageInputRef.current.value;
-        const enteredDate = dateInputRef.current.value;
-        const enteredDescription = descriptionInputRef.current.value;
+        const enteretedTitle = newJourney.title;
+        const enteredImage = newJourney.image;
+        const enteredDate = newJourney.date;
+        const enteredDescription = newJourney.description;
 
-        const journeyData = {
-            title: enteretedTitle,
-            image: enteredImage,
-            date: enteredDate,
-            description: enteredDescription
-        }
+        const formData = new FormData();
+        formData.append('title', enteretedTitle);
+        formData.append('image', enteredImage);
+        formData.append('date', enteredDate);
+        formData.append('description', enteredDescription);
 
         fetch(`${BASE_URL}/travel-journeys`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(journeyData)
+            body: JSON.stringify(formData)
         }).then(() => {
             navigate('/travel-journeys');
         })
     }
 
-    return { submitHandler, titleInputRef, imageInputRef, dateInputRef, descriptionInputRef }
+    return { submitHandler, newJourney, handleChange, handleImage }
 }
 
 export default useFormAddTravelJourneys;

@@ -17,9 +17,9 @@ function JourneyItem(props) {
                     <p>{props.description}</p>
                 </div>
                 <div className={classes.actions}>
-                    <AddFavoriteForm values={props} />
-                    <a href={`travel-journeys/${props._id}`}>Edit</a>
-                    {Todo != undefined ? <Todo delete={() => props.delete(props._id)}></Todo> : null}
+                    <AddFavoriteForm  values={props} />
+                    <a href={`travel-journeys/${props._id}`}><button>Edit</button></a>
+                    {Todo !== undefined ? <Todo delete={() => props.delete(props._id)}></Todo> : null}
                 </div>
             </Card>
         </li>
