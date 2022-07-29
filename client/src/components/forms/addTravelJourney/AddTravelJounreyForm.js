@@ -4,26 +4,26 @@ import classes from './AddTravelJourneyForm.module.css';
 
 
 function AddTravelJourneyForm() {
-    const { submitHandler, newJourney, handleChange, handleImage} = useFormTravelJourney();
+    const { submitHandler, titleInputRef, imageInputRef, dateInputRef, descriptionInputRef } = useFormTravelJourney();
 
     return (
         <Card>
-            <form className={classes.form} onSubmit={submitHandler} encType="multipart/form-data">
+            <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <label htmlFor='title'>Journey Title</label>
-                    <input type='text' value={newJourney.title} name="title" required id='title' onChange={handleChange} />
+                    <input type='text' required id='title' ref={titleInputRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='image'>Journey Image</label>
-                    <input type='file' name="image" accept=".png, .jpg, .jpeg" required id='image' onChange={handleImage} />
+                    <input type='url' required id='image' ref={imageInputRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='date'>Journey Date</label>
-                    <input type='date' value={newJourney.date} name="date" required id='date' onChange={handleChange} />
+                    <input type='date' required id='date' ref={dateInputRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='description'>Journey Description</label>
-                    <textarea type='text' value={newJourney.description} name="description" required id='description' rows='5' onChange={handleChange}></textarea>
+                    <textarea type='text' required id='description' rows='5' ref={descriptionInputRef}></textarea>
                 </div>
                 <div className={classes.actions}>
                     <button>Add Journey</button>
